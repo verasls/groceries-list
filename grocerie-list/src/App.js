@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { IonIcon } from "@ionic/react";
+import { closeOutline } from "ionicons/icons";
 
 const initialList = [
   {
@@ -47,15 +49,9 @@ function Header() {
     <div className="header">
       <h1>🛒 Groceries list</h1>
       <div className="controls">
-        <Button padding={"0.8rem 1.6rem"} borderRadius={"10px"}>
-          Add Category
-        </Button>
-        <Button padding={"0.8rem 1.6rem"} borderRadius={"10px"}>
-          Add Item
-        </Button>
-        <Button padding={"0.8rem 1.6rem"} borderRadius={"10px"}>
-          Clear List
-        </Button>
+        <Button>Add Category</Button>
+        <Button>Add Item</Button>
+        <Button>Clear List</Button>
       </div>
     </div>
   );
@@ -64,7 +60,12 @@ function Header() {
 function GrocerieList({ list }) {
   return (
     <div className="list-container">
-      <h2>{list.category}</h2>
+      <div className="list-header">
+        <h2>{list.category}</h2>
+        <ButtonRound size={"1.5rem"}>
+          <IonIcon className="icon" icon={closeOutline} />
+        </ButtonRound>
+      </div>
       <ul className="grocerie-list">
         {list.items.map((item) => (
           <GrocerieItem item={item} key={item.name} />
@@ -79,19 +80,24 @@ function GrocerieItem({ item }) {
     <li className="grocerie-item">
       <input type="checkbox" />
       {item.name}
+      <ButtonRound size={"1rem"}>
+        <IonIcon className="icon" icon={closeOutline} />
+      </ButtonRound>
     </li>
   );
 }
 
-function Button({ padding, borderRadius, children }) {
+function Button({ children }) {
   return (
-    <button
-      className="btn"
-      style={{
-        padding: padding,
-        borderRadius: borderRadius,
-      }}
-    >
+    <button className="btn">
+      <span className="btn-txt">{children}</span>
+    </button>
+  );
+}
+
+function ButtonRound({ size, children }) {
+  return (
+    <button className="btn-round" style={{ width: size, height: size }}>
       <span className="btn-txt">{children}</span>
     </button>
   );

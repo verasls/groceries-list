@@ -2,6 +2,7 @@
   --text-color: #212529;
   --list-separator: #dee2e6;
   --btn-background: #f1f3f5;
+  --btn-background-sec: #dee2e6;
   --checkbox: #ffd43b;
 }
 
@@ -26,7 +27,6 @@ h1 {
 h2 {
   font-size: clamp(1rem, 1.5vw + 1rem, 2rem);
   font-weight: 500;
-  padding-top: 0.4rem;
 }
 
 .app {
@@ -60,6 +60,23 @@ h2 {
   border-top: 1px solid var(--list-separator);
 }
 
+.list-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+  padding-top: 0.4rem;
+}
+
+.list-header .btn-round {
+  transition: all 0.3s ease;
+  transform: scale(0);
+}
+
+.list-header:hover .btn-round {
+  transform: scale(1);
+}
+
 .grocerie-list {
   list-style: none;
   display: flex;
@@ -74,7 +91,16 @@ h2 {
 .grocerie-item {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.8rem;
+}
+
+.grocerie-item .btn-round {
+  transition: all 0.3s ease;
+  transform: scale(0);
+}
+
+.grocerie-item:hover .btn-round {
+  transform: scale(1);
 }
 
 .btn {
@@ -82,13 +108,40 @@ h2 {
   align-items: center;
   justify-content: center;
   border: none;
+  padding: 1.2rem 1.6rem;
+  border-radius: 10px;
   background-color: var(--btn-background);
   box-shadow: 0.2rem 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.075);
+}
+
+.btn:hover,
+.btn:active {
+  background-color: var(--btn-background-sec);
+}
+
+.btn-round {
+  background-color: var(--btn-background);
+  border: 0;
+  padding: 0.4rem;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-round:hover,
+.btn-round:active {
+  background-color: var(--btn-background-sec);
 }
 
 .btn-txt {
   color: var(--text-color);
   font-weight: 500;
+  line-height: 0;
+}
+
+.icon {
+  --ionicon-stroke-width: 48px;
 }
 
 input[type="checkbox"] {
