@@ -29,13 +29,27 @@ const initialList = [
 ];
 
 export default function App() {
+  const [showCategoryForm, setShowCategoryForm] = useState(false);
+  const [showItemForm, setShowItemForm] = useState(false);
   const [grocerieList, setGrocerieList] = useState(initialList);
+
+  function handleShowCategoryForm() {
+    setShowCategoryForm((show) => !show);
+  }
+
+  function handleShowItemForm() {
+    setShowItemForm((show) => !show);
+  }
 
   return (
     <div className="app">
-      <Header />
-      <FormAddCategory />
-      <FormAddItem grocerieList={grocerieList} />
+      <Header
+        handleShowCategoryForm={handleShowCategoryForm}
+        handleShowItemForm={handleShowItemForm}
+      />
+
+      {showCategoryForm ? <FormAddCategory /> : null}
+      {showItemForm ? <FormAddItem grocerieList={grocerieList} /> : null}
 
       <div className="container">
         {grocerieList.map((list) => (
@@ -46,13 +60,13 @@ export default function App() {
   );
 }
 
-function Header() {
+function Header({ handleShowCategoryForm, handleShowItemForm }) {
   return (
     <div className="header">
       <h1>🛒 Groceries list</h1>
       <div className="controls">
-        <Button>Add Category</Button>
-        <Button>Add Item</Button>
+        <Button onClick={handleShowCategoryForm}>Add Category</Button>
+        <Button onClick={handleShowItemForm}>Add Item</Button>
         <Button>Clear List</Button>
       </div>
     </div>
@@ -114,17 +128,21 @@ function GrocerieItem({ item }) {
   );
 }
 
-function Button({ children }) {
+function Button({ children, onClick }) {
   return (
-    <button className="btn">
+    <button className="btn" onClick={onClick}>
       <span className="btn-txt">{children}</span>
     </button>
   );
 }
 
-function ButtonRound({ size, children }) {
+function ButtonRound({ size, onClick, children }) {
   return (
-    <button className="btn-round" style={{ width: size, height: size }}>
+    <button
+      className="btn-round"
+      style={{ width: size, height: size }}
+      onClick={onClick}
+    >
       <span className="btn-txt">{children}</span>
     </button>
   );

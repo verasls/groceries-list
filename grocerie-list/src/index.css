@@ -52,7 +52,7 @@ h2 {
   padding-bottom: 1.6rem;
 }
 
-input,
+input[type="text"],
 select {
   background-color: var(--input-background);
   border: none;
@@ -61,7 +61,7 @@ select {
   padding: 0.8rem 1.6rem 0.8rem 0.8rem;
 }
 
-input:focus,
+input[type="text"]:focus,
 select:focus {
   outline: none;
   box-shadow: 0 0 0 1px var(--text-color);
