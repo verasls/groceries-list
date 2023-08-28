@@ -3,6 +3,7 @@
   --list-separator: #dee2e6;
   --btn-background: #f1f3f5;
   --btn-background-sec: #dee2e6;
+  --input-background: #f8f9fa;
   --checkbox: #ffd43b;
 }
 
@@ -41,6 +42,29 @@ h2 {
   justify-content: space-between;
   padding: clamp(2rem, 1vw, 10rem) 0;
   gap: 1.2rem;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  padding-left: 0.8rem;
+  padding-bottom: 1.6rem;
+}
+
+input,
+select {
+  background-color: var(--input-background);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 0.8rem 1.6rem 0.8rem 0.8rem;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--text-color);
 }
 
 .controls {

@@ -20,7 +20,7 @@ const initialList = [
     ],
   },
   {
-    category: "",
+    category: "Others",
     items: [
       { name: "Broom", checked: true },
       { name: "Bucket", checked: true },
@@ -34,6 +34,8 @@ export default function App() {
   return (
     <div className="app">
       <Header />
+      <FormAddCategory />
+      <FormAddItem grocerieList={grocerieList} />
 
       <div className="container">
         {grocerieList.map((list) => (
@@ -54,6 +56,31 @@ function Header() {
         <Button>Clear List</Button>
       </div>
     </div>
+  );
+}
+
+function FormAddCategory() {
+  return (
+    <form className="form">
+      <input type="text" placeholder="Category name" />
+      <Button>Add</Button>
+    </form>
+  );
+}
+
+function FormAddItem({ grocerieList }) {
+  return (
+    <form className="form">
+      <select>
+        {grocerieList.map((list) => (
+          <option value={list.category} key={list.category}>
+            {list.category}
+          </option>
+        ))}
+      </select>
+      <input type="text" placeholder="Item name" />
+      <Button>Add</Button>
+    </form>
   );
 }
 
