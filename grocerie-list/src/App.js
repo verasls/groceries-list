@@ -36,6 +36,13 @@ export default function App() {
   const [showItemForm, setShowItemForm] = useState(false);
   const [grocerieList, setGrocerieList] = useState(initialList);
 
+  function handleAddCategory(newCategory) {
+    setGrocerieList((grocerieList) => [
+      ...grocerieList,
+      { category: newCategory, items: [] },
+    ]);
+  }
+
   return (
     <div className="app">
       <Header
@@ -43,7 +50,12 @@ export default function App() {
         handleShowItemForm={() => setShowItemForm((show) => !show)}
       />
 
-      {showCategoryForm ? <FormAddCategory /> : null}
+      {showCategoryForm ? (
+        <FormAddCategory
+          setShowCategoryForm={setShowCategoryForm}
+          onAddCategory={handleAddCategory}
+        />
+      ) : null}
       {showItemForm ? <FormAddItem grocerieList={grocerieList} /> : null}
 
       <div className="container">
