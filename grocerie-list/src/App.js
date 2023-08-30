@@ -43,6 +43,19 @@ export default function App() {
     ]);
   }
 
+  function handleAddItem(category, newItem) {
+    setGrocerieList((grocerieList) =>
+      grocerieList.map((list) =>
+        list.category === category
+          ? {
+              ...list,
+              items: [...list.items, { name: newItem, checked: false }],
+            }
+          : list
+      )
+    );
+  }
+
   return (
     <div className="app">
       <Header
@@ -56,7 +69,13 @@ export default function App() {
           onAddCategory={handleAddCategory}
         />
       ) : null}
-      {showItemForm ? <FormAddItem grocerieList={grocerieList} /> : null}
+      {showItemForm ? (
+        <FormAddItem
+          grocerieList={grocerieList}
+          setShowItemForm={setShowItemForm}
+          onAddItem={handleAddItem}
+        />
+      ) : null}
 
       <div className="container">
         {grocerieList.map((list) => (
