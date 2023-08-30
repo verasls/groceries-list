@@ -128,8 +128,8 @@ export default function App() {
           <GrocerieList
             list={list}
             key={list.category}
-            handleDeleteCategory={handleDeleteCategory}
-            handleDeleteItem={handleDeleteItem}
+            onDeleteCategory={handleDeleteCategory}
+            onDeleteItem={handleDeleteItem}
           />
         ))}
       </div>

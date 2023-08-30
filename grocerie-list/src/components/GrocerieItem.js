@@ -2,12 +2,12 @@ import ButtonRound from "./reusable/ButtonRound";
 import { IonIcon } from "@ionic/react";
 import { closeOutline } from "ionicons/icons";
 
-export default function GrocerieItem({ item, handleDeleteItem }) {
+export default function GrocerieItem({ item, onDeleteItem }) {
   return (
     <li className="grocerie-item">
       <input type="checkbox" />
       {item.name}
-      <ButtonRound size={"1rem"} onClick={() => handleDeleteItem(item)}>
+      <ButtonRound size={"1rem"} onClick={() => onDeleteItem(item)}>
         <IonIcon className="icon" icon={closeOutline} />
       </ButtonRound>
     </li>
