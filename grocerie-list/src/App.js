@@ -56,11 +56,21 @@ export default function App() {
     );
   }
 
+  function handleClearList() {
+    const confirm = window.confirm(
+      "This will delete all categories and items. Do you want to proceed?"
+    );
+    if (!confirm) return;
+
+    setGrocerieList([]);
+  }
+
   return (
     <div className="app">
       <Header
         handleShowCategoryForm={() => setShowCategoryForm((show) => !show)}
         handleShowItemForm={() => setShowItemForm((show) => !show)}
+        onClearList={handleClearList}
       />
 
       {showCategoryForm ? (
