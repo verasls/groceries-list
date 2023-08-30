@@ -5,48 +5,10 @@ import GrocerieList from "./components/GrocerieList";
 
 import { useState } from "react";
 
-const initialList = [
-  {
-    category: "Fruits and vegetables",
-    items: [
-      {
-        name: "Banana",
-        checked: true,
-        parentCategory: "Fruits and vegetables",
-      },
-      {
-        name: "Apple",
-        checked: false,
-        parentCategory: "Fruits and vegetables",
-      },
-      {
-        name: "Broccoli",
-        checked: false,
-        parentCategory: "Fruits and vegetables",
-      },
-    ],
-  },
-  {
-    category: "Dairy",
-    items: [
-      { name: "Milk", checked: false, parentCategory: "Dairy" },
-      { name: "Yoghurt", checked: false, parentCategory: "Dairy" },
-      { name: "Cheese", checked: false, parentCategory: "Dairy" },
-    ],
-  },
-  {
-    category: "Others",
-    items: [
-      { name: "Broom", checked: true, parentCategory: "Others" },
-      { name: "Bucket", checked: true, parentCategory: "Others" },
-    ],
-  },
-];
-
 export default function App() {
   const [showCategoryForm, setShowCategoryForm] = useState(false);
   const [showItemForm, setShowItemForm] = useState(false);
-  const [grocerieList, setGrocerieList] = useState(initialList);
+  const [grocerieList, setGrocerieList] = useState([]);
 
   function handleAddCategory(newCategory) {
     setGrocerieList((grocerieList) => [
