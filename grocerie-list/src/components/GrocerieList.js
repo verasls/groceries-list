@@ -9,19 +9,28 @@ export default function GrocerieList({
   onToggleItem,
   onDeleteItem,
 }) {
+  function sortList(list) {
+    return {
+      ...list,
+      items: list.items.slice().sort((a, b) => a.checked - b.checked),
+    };
+  }
+
+  const sortedList = sortList(list);
+
   return (
     <div className="list-container">
       <div className="list-header">
-        <h2>{list.category}</h2>
+        <h2>{sortedList.category}</h2>
         <ButtonRound
           size={"1.5rem"}
-          onClick={() => onDeleteCategory(list.category)}
+          onClick={() => onDeleteCategory(sortedList.category)}
         >
           <IonIcon className="icon" icon={closeOutline} />
         </ButtonRound>
       </div>
       <ul className="grocerie-list">
-        {list.items.map((item) => (
+        {sortedList.items.map((item) => (
           <GrocerieItem
             item={item}
             key={item.name}
