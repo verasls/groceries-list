@@ -3,7 +3,7 @@ import GrocerieItem from "./GrocerieItem";
 import { IonIcon } from "@ionic/react";
 import { closeOutline } from "ionicons/icons";
 
-export default function GrocerieList({ list }) {
+export default function GrocerieList({ list, handleDeleteItem }) {
   return (
     <div className="list-container">
       <div className="list-header">
@@ -14,7 +14,11 @@ export default function GrocerieList({ list }) {
       </div>
       <ul className="grocerie-list">
         {list.items.map((item) => (
-          <GrocerieItem item={item} key={item.name} />
+          <GrocerieItem
+            item={item}
+            key={item.name}
+            handleDeleteItem={handleDeleteItem}
+          />
         ))}
       </ul>
     </div>

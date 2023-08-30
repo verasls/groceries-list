@@ -9,24 +9,36 @@ const initialList = [
   {
     category: "Fruits and vegetables",
     items: [
-      { name: "Banana", checked: true },
-      { name: "Apple", checked: false },
-      { name: "Broccoli", checked: false },
+      {
+        name: "Banana",
+        checked: true,
+        parentCategory: "Fruits and vegetables",
+      },
+      {
+        name: "Apple",
+        checked: false,
+        parentCategory: "Fruits and vegetables",
+      },
+      {
+        name: "Broccoli",
+        checked: false,
+        parentCategory: "Fruits and vegetables",
+      },
     ],
   },
   {
     category: "Dairy",
     items: [
-      { name: "Milk", checked: false },
-      { name: "Yoghurt", checked: false },
-      { name: "Cheese", checked: false },
+      { name: "Milk", checked: false, parentCategory: "Dairy" },
+      { name: "Yoghurt", checked: false, parentCategory: "Dairy" },
+      { name: "Cheese", checked: false, parentCategory: "Dairy" },
     ],
   },
   {
     category: "Others",
     items: [
-      { name: "Broom", checked: true },
-      { name: "Bucket", checked: true },
+      { name: "Broom", checked: true, parentCategory: "Others" },
+      { name: "Bucket", checked: true, parentCategory: "Others" },
     ],
   },
 ];
@@ -65,6 +77,21 @@ export default function App() {
     setGrocerieList([]);
   }
 
+  function handleDeleteItem(item) {
+    setGrocerieList((grocerieList) =>
+      grocerieList.map((list) =>
+        list.category === item.parentCategory
+          ? {
+              ...list,
+              items: list.items.filter(
+                (listItem) => listItem.name !== item.name
+              ),
+            }
+          : list
+      )
+    );
+  }
+
   return (
     <div className="app">
       <Header
@@ -89,7 +116,11 @@ export default function App() {
 
       <div className="container">
         {grocerieList.map((list) => (
-          <GrocerieList list={list} key={list.category} />
+          <GrocerieList
+            list={list}
+            key={list.category}
+            handleDeleteItem={handleDeleteItem}
+          />
         ))}
       </div>
     </div>
