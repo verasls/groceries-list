@@ -101,6 +101,24 @@ export default function App() {
     );
   }
 
+  function handleToggleItem(item) {
+    console.log(item);
+    setGrocerieList((grocerieList) =>
+      grocerieList.map((list) =>
+        list.category === item.parentCategory
+          ? {
+              ...list,
+              items: list.items.map((listItem) =>
+                listItem.name === item.name
+                  ? { ...listItem, checked: !listItem.checked }
+                  : listItem
+              ),
+            }
+          : list
+      )
+    );
+  }
+
   return (
     <div className="app">
       <Header
@@ -129,6 +147,7 @@ export default function App() {
             list={list}
             key={list.category}
             onDeleteCategory={handleDeleteCategory}
+            onToggleItem={handleToggleItem}
             onDeleteItem={handleDeleteItem}
           />
         ))}

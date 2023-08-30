@@ -3,7 +3,12 @@ import GrocerieItem from "./GrocerieItem";
 import { IonIcon } from "@ionic/react";
 import { closeOutline } from "ionicons/icons";
 
-export default function GrocerieList({ list, onDeleteCategory, onDeleteItem }) {
+export default function GrocerieList({
+  list,
+  onDeleteCategory,
+  onToggleItem,
+  onDeleteItem,
+}) {
   return (
     <div className="list-container">
       <div className="list-header">
@@ -20,6 +25,7 @@ export default function GrocerieList({ list, onDeleteCategory, onDeleteItem }) {
           <GrocerieItem
             item={item}
             key={item.name}
+            onToggleItem={onToggleItem}
             onDeleteItem={onDeleteItem}
           />
         ))}
