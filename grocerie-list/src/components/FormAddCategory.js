@@ -13,7 +13,7 @@ export default function FormAddCategory({
     onAddCategory(newCategory);
 
     setNewCategory("");
-    setShowCategoryForm((show) => !show);
+    setShowCategoryForm(false);
   }
 
   return (
