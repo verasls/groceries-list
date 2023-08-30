@@ -61,7 +61,10 @@ export default function App() {
         list.category === category
           ? {
               ...list,
-              items: [...list.items, { name: newItem, checked: false }],
+              items: [
+                ...list.items,
+                { name: newItem, checked: false, parentCategory: category },
+              ],
             }
           : list
       )
