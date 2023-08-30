@@ -68,8 +68,8 @@ export default function App() {
   return (
     <div className="app">
       <Header
-        handleShowCategoryForm={() => setShowCategoryForm((show) => !show)}
-        handleShowItemForm={() => setShowItemForm((show) => !show)}
+        onShowCategoryForm={() => setShowCategoryForm((show) => !show)}
+        onShowItemForm={() => setShowItemForm((show) => !show)}
         onClearList={handleClearList}
       />
 
