@@ -80,6 +80,12 @@ export default function App() {
     setGrocerieList([]);
   }
 
+  function handleDeleteCategory(category) {
+    setGrocerieList((grocerieList) =>
+      grocerieList.filter((list) => list.category !== category)
+    );
+  }
+
   function handleDeleteItem(item) {
     setGrocerieList((grocerieList) =>
       grocerieList.map((list) =>
@@ -122,6 +128,7 @@ export default function App() {
           <GrocerieList
             list={list}
             key={list.category}
+            handleDeleteCategory={handleDeleteCategory}
             handleDeleteItem={handleDeleteItem}
           />
         ))}

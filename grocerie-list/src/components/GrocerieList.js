@@ -3,12 +3,19 @@ import GrocerieItem from "./GrocerieItem";
 import { IonIcon } from "@ionic/react";
 import { closeOutline } from "ionicons/icons";
 
-export default function GrocerieList({ list, handleDeleteItem }) {
+export default function GrocerieList({
+  list,
+  handleDeleteCategory,
+  handleDeleteItem,
+}) {
   return (
     <div className="list-container">
       <div className="list-header">
         <h2>{list.category}</h2>
-        <ButtonRound size={"1.5rem"}>
+        <ButtonRound
+          size={"1.5rem"}
+          onClick={() => handleDeleteCategory(list.category)}
+        >
           <IonIcon className="icon" icon={closeOutline} />
         </ButtonRound>
       </div>
