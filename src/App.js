@@ -4,13 +4,16 @@ import FormAddItem from "./components/FormAddItem";
 import Warning from "./components/Warning";
 import GrocerieList from "./components/GrocerieList";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function App() {
   const [showCategoryForm, setShowCategoryForm] = useState(false);
   const [showItemForm, setShowItemForm] = useState(false);
   const [showWarning, setShowWarning] = useState(false);
-  const [grocerieList, setGrocerieList] = useState([]);
+  const [grocerieList, setGrocerieList] = useState(() => {
+    const storedValue = localStorage.getItem("grocerieList");
+    return storedValue ? JSON.parse(storedValue) : [];
+  });
 
   function handleShowCategoryForm() {
     setShowWarning(false);
@@ -95,6 +98,13 @@ export default function App() {
       )
     );
   }
+
+  useEffect(
+    function () {
+      localStorage.setItem("grocerieList", JSON.stringify(grocerieList));
+    },
+    [grocerieList]
+  );
 
   return (
     <div className="app">
