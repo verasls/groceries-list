@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import FormAddCategory from "./components/FormAddCategory";
 import FormAddItem from "./components/FormAddItem";
+import Warning from "./components/Warning";
 import GrocerieList from "./components/GrocerieList";
 
 import { useState } from "react";
@@ -8,7 +9,21 @@ import { useState } from "react";
 export default function App() {
   const [showCategoryForm, setShowCategoryForm] = useState(false);
   const [showItemForm, setShowItemForm] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
   const [grocerieList, setGrocerieList] = useState([]);
+
+  function handleShowCategoryForm() {
+    setShowWarning(false);
+    setShowCategoryForm((show) => !show);
+  }
+
+  function handleShowItemForm() {
+    if (!grocerieList.length) {
+      setShowWarning((show) => !show);
+      return;
+    }
+    setShowItemForm((show) => !show);
+  }
 
   function handleAddCategory(newCategory) {
     setGrocerieList((grocerieList) => [
@@ -84,24 +99,27 @@ export default function App() {
   return (
     <div className="app">
       <Header
-        onShowCategoryForm={() => setShowCategoryForm((show) => !show)}
-        onShowItemForm={() => setShowItemForm((show) => !show)}
+        onShowCategoryForm={handleShowCategoryForm}
+        onShowItemForm={handleShowItemForm}
         onClearList={handleClearList}
       />
 
-      {showCategoryForm ? (
+      {showCategoryForm && (
         <FormAddCategory
           setShowCategoryForm={setShowCategoryForm}
           onAddCategory={handleAddCategory}
         />
-      ) : null}
-      {showItemForm ? (
+      )}
+      {showItemForm && (
         <FormAddItem
           grocerieList={grocerieList}
           setShowItemForm={setShowItemForm}
           onAddItem={handleAddItem}
         />
-      ) : null}
+      )}
+      {showWarning && (
+        <Warning message={"There are no categories. Please add one first."} />
+      )}
 
       <div className="container">
         {grocerieList.map((list) => (

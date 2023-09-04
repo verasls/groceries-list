@@ -5,6 +5,7 @@
   --btn-background-sec: #dee2e6;
   --input-background: #f8f9fa;
   --checkbox: #ffd43b;
+  --warning: #fa5252;
 }
 
 * {
@@ -99,6 +100,17 @@ select:focus {
 
 .list-header:hover .btn-round {
   transform: scale(1);
+}
+
+.warning {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.warning-icon {
+  font-size: 1.6rem;
+  color: var(--warning);
 }
 
 .grocerie-list {
