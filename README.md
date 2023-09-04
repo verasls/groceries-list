@@ -1,4 +1,4 @@
-# Grocerie List
+# Groceries List
 
 This project is a simple grocerie list app, built to practice some basic state management and controlled elements.
 
@@ -11,13 +11,13 @@ To run this app locally:
 1. Clone this repo
 
 ```
-git clone https://github.com/verasls/practicing-react.git
+git clone https://github.com/verasls/groceries-list.git
 ```
 
 2. Go to the project's directory
 
 ```
-cd practice-react/grocerie-list
+cd /groceries-list
 ```
 
 3. Install all dependencies
