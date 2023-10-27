@@ -1,10 +1,11 @@
+import { useEffect, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
+
 import Header from "./components/Header";
 import FormAddCategory from "./components/FormAddCategory";
 import FormAddItem from "./components/FormAddItem";
 import Warning from "./components/Warning";
 import GrocerieList from "./components/GrocerieList";
-
-import { useEffect, useState } from "react";
 
 export default function App() {
   const [showCategoryForm, setShowCategoryForm] = useState(false);
@@ -142,6 +143,8 @@ export default function App() {
           />
         ))}
       </div>
+
+      <Analytics />
     </div>
   );
 }
