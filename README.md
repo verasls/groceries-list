@@ -1,6 +1,6 @@
 # Groceries List
 
-This project is a simple grocerie list app, built to practice some basic state management and controlled elements.
+This project is a simple grocerie list app, built to practice some basic state management and controlled elements. You can see it live at [groceries-list-sigma.vercel.app](https://groceries-list-sigma.vercel.app/)
 
 It was developed using React and styled with vanilla CSS.
 
@@ -32,4 +32,4 @@ npm install
 npm start
 ```
 
-It will be live at [http://localhost:3000](http://localhost:3000).
+It will be running at [http://localhost:3000](http://localhost:3000).
