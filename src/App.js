@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Analytics } from "@vercel/analytics/react";
 
 import Header from "./components/Header";
 import FormAddCategory from "./components/FormAddCategory";
@@ -143,8 +142,6 @@ export default function App() {
           />
         ))}
       </div>
-
-      <Analytics />
     </div>
   );
 }
